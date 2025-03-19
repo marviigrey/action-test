@@ -21,4 +21,4 @@ jobs:
               run: cat dragon.txt
 
             - name: List repo files
-              run: ls - lrta
+              run: ls -lrta
