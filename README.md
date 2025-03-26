@@ -27,4 +27,17 @@ jobs:
 
 ```
 
-we will have 3 operating systems running 2 jobs each, in parallel. basically ubuntu-latest running the hello-world and alpine image at a go, same for windows-latest and ubuntu-20.04
+we will have 3 operating systems running 2 jobs each, in parallel. basically ubuntu-latest running the hello-world and alpine image at a go, same for windows-latest and ubuntu-20.04.
+
+Note: if a job fails the whole workflow will be considered a failure.
+
+We can make use of the exclude and include keywords to add or remove a particular matrix.
+
+```
+exclude: #exclude a matrix from running
+               - images: alpine
+                 os: windows-latest
+            include: #include a new matrix
+               - images: amd64/alpine
+                 os: ubuntu-20.04
+```

@@ -6,9 +6,18 @@ on:
 jobs:
     deploy:
         strategy: 
+          fail-fast: false
+          max-parallel: 2 #number of jobs to run at a time.
           matrix: 
-            os: [ubuntu-latest, ubuntu-20.04, windows-latest]
-            images: [hello-world, alpine]
+            os: [ubuntu-latest, ubuntu-20.04, windows-latest] #create a key-value pair for matrix configs for list of OS.
+            images: [hello-world, alpine] #create a key-value pair for matrix configs for list of images.
+
+            exclude: #exclude a matrix from running
+               - images: alpine
+                 os: windows-latest
+            include: #include a new matrix
+               - images: amd64/alpine
+                 os: ubuntu-20.04
         runs-on: ${{ matrix.os }}
         steps:
             - name: Echo Docker details
