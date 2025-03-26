@@ -45,3 +45,22 @@ exclude: #exclude a matrix from running
 Context: 
 
 Context is a set of predefined objects or variables that contain information about a workflow run. Information such as environments,events,variables,secrets,jobs,steps and other variety of information. It's a way to access information about a workflow.
+
+```
+name: Context testing
+on: push
+
+jobs:
+  dump_contexts_to_log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+```
+The following context gathers information about the github. 
+
+ To make reference to context within our workflow configuration file we make use of expressions.
+
+We can use expression to programmatically set environment variables in workflow files and access contexts. 
