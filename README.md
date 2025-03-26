@@ -41,3 +41,7 @@ exclude: #exclude a matrix from running
                - images: amd64/alpine
                  os: ubuntu-20.04
 ```
+
+Context: 
+
+Context is a set of predefined objects or variables that contain information about a workflow run. Information such as environments,events,variables,secrets,jobs,steps and other variety of information. It's a way to access information about a workflow.
