@@ -67,3 +67,12 @@ We can use expression to programmatically set environment variables in workflow 
 
 Workflow event filters:
 We can hae workflow triggered by an event activity type
+
+skipping workflow runs:
+You can skip workflow runs triggered by the push and pull_request events by including a command in your commit message. Examples of skip strings:
+
+- skip ci
+- ci skip
+- no ci
+- skip actions
+- actions skip
