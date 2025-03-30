@@ -64,3 +64,6 @@ The following context gathers information about the github.
  To make reference to context within our workflow configuration file we make use of expressions.
 
 We can use expression to programmatically set environment variables in workflow files and access contexts. 
+
+Workflow event filters:
+We can hae workflow triggered by an event activity type
