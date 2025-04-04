@@ -1,6 +1,6 @@
 # action-test
 
-This is me building my github actions workflow, learning how github action works.
+This is me writing all you need to know about github actions workflow, learning how github action works.
 
 Timeouts in github actions:
 Github automatically kills job at 6hrs, you can add a timeout to you jobs at the step and job level level:
@@ -76,3 +76,32 @@ You can skip workflow runs triggered by the push and pull_request events by incl
 - no ci
 - skip actions
 - actions skip
+
+Debug workflows:
+If the workflow logs do not provide details to diagnose why a workflow,job, or step is not working as expected,you can enable additional debug logging. These extra logs are enabled by setting secrets or variables in the repository containing the workflow, so the same permission requirements will be applied.
+you can enable: 
+
+- runner logging: runner diagnostic logging provides additional log files that contain information about how a runner is executing a job. two extra log files are added to the log srchive:
+
+- step logging: step debug logging increase the verbosity of a job's logs during and after a job's execution.
+
+We can enable dubug logging either by re-running the job on the UI or by creating variables or secret in the UI repository that contains the workflow:
+For runner diagnostic logging:
+ $ACTIONS_RUNNER_DEBUG: true
+
+For step Debug logging:
+$ACTIONS_STEP_DEBUG: true
+
+You can create either secrets or vsriables for this but any rule set on secret will take precedence over the one set on variable.
+
+Github provides a lot of REST API for you to integrate with your workflow, We can use the REST API to view logs and workflow jobs in github actions.
+
+You can get the logs of a job by using the github rest api follow the doc: https://docs.github.com/en/rest/actions/workflow-jobs?apiVersion=2022-11-28#get-a-job-for-a-workflow-run
+
+Workflow_dispatch inputs:
+We can use workflow_dispatch to manually trigger our workflows. When using workflow_dispatch event, you can optionally specify inputs that are passed to the workflow. This trigger only recieves events when the workflow file is on the default branch. The triggered workflow recieves the inputs in the inputs context:
+
+key factors to note:
+  - The workflow will also receive the inputs in the github.events.inputs context. The information in the inputs context preserves boolean values as boolean instead of converting them to strings. The choice type resolves to a string and is a single selectable option.
+  - The maximum number of top level-properties for input is 10
+  - The maximum payload for inputs is 65535 characters.
