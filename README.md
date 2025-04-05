@@ -105,3 +105,9 @@ key factors to note:
   - The workflow will also receive the inputs in the github.events.inputs context. The information in the inputs context preserves boolean values as boolean instead of converting them to strings. The choice type resolves to a string and is a single selectable option.
   - The maximum number of top level-properties for input is 10
   - The maximum payload for inputs is 65535 characters.
+
+  Trigger workflows for manual events:
+  - workflow_dispatch
+  - repository_dispatch
+  - workflow_call - build based on the success of another workflow.
+  - workflow_run
