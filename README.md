@@ -111,3 +111,28 @@ key factors to note:
   - repository_dispatch
   - workflow_call - build based on the success of another workflow.
   - workflow_run
+
+  Github actions expressions are used to programmatically execute jobs and steps based on conditions.
+  if: empowers you to control whether a step or a job should proceed based on a defined condition. The if condition is typically used within a job or steps configuration.
+
+    steps:
+    - name: testing
+      if: <expression> || <expression>
+      run: ./script.sh
+
+    jobs:
+      deploy:
+        if: github.ref == 'refs/heads/main'
+      steps: 
+
+
+  continue-on-error: This option in github actions allows you to specify whether a job should proceed or stop after a step fails.
+       steps: 
+        - name: testing
+          continue-on-error: true
+          run: ./script.sh
+
+      jobs: 
+        Deploy:
+          continue-on-error: false
+        steps:
